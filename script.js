@@ -22,7 +22,7 @@ function showFormat() {
     formatView.style.display = 'block';
     treeView.style.display = 'none';
     try {
-        jsonObject = JSON.parse(editor.getValue());
+        jsonObject = jsonObject === null ? JSON.parse(editor.getValue()) : jsonObject;
         editor.setValue(JSON.stringify(jsonObject, null, 2));
     } catch (error) {
         alert('Invalid JSON input');
@@ -35,7 +35,7 @@ function showTree() {
     formatView.style.display = 'none';
     treeView.style.display = 'block';
     try {
-        jsonObject = JSON.parse(editor.getValue());
+        jsonObject = jsonObject === null ? JSON.parse(editor.getValue()) : jsonObject;
         treeView.innerHTML = createTree(jsonObject);
         addEditableEventListeners();
     } catch (error) {
@@ -57,7 +57,7 @@ function createTree(obj, path = '') {
 }
 
 function addEditableEventListeners() {
-    const values = document.querySelectorAll('.value');
+    const values = document.querySelectorAll('.json-value');
     values.forEach(value => {
         value.addEventListener('blur', function() {
             const path = this.dataset.path.split('.');
