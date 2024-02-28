@@ -1,4 +1,4 @@
-let jsonObject = null;
+let jsonObject = {};
 
 
 CodeMirror.defineMode("json", function(config) {
@@ -22,7 +22,7 @@ function showFormat() {
     formatView.style.display = 'block';
     treeView.style.display = 'none';
     try {
-        jsonObject = jsonObject === null ? JSON.parse(editor.getValue()) : jsonObject;
+        jsonObject = editor.getValue() === '' ? {} : JSON.parse(editor.getValue());
         editor.setValue(JSON.stringify(jsonObject, null, 2));
     } catch (error) {
         alert('Invalid JSON input');
@@ -35,7 +35,7 @@ function showTree() {
     formatView.style.display = 'none';
     treeView.style.display = 'block';
     try {
-        jsonObject = jsonObject === null ? JSON.parse(editor.getValue()) : jsonObject;
+        jsonObject = editor.getValue() === '' ? {} : JSON.parse(editor.getValue());
         treeView.innerHTML = createTree(jsonObject);
         addEditableEventListeners();
     } catch (error) {
@@ -62,6 +62,7 @@ function addEditableEventListeners() {
         value.addEventListener('blur', function() {
             const path = this.dataset.path.split('.');
             setValue(jsonObject, path, this.textContent);
+            editor.setValue(JSON.stringify(jsonObject, null, 2));
         });
     });
 }
