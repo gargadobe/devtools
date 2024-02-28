@@ -3,12 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>JSON Formatter</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.3/codemirror.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.3/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.3/mode/javascript/javascript.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.3/theme/monokai.min.css">
 </head>
 <body>
-    <textarea id="input" placeholder="Paste JSON here..."></textarea>
-    <button onclick="formatJSON()">Format JSON</button>
-    <pre id="output"></pre>
+    <div class="container">
+        <div class="tabs">
+            <button onclick="showFormat()">Format</button>
+            <button onclick="showTree()">Tree View</button>
+        </div>
+        <div id="formatView" class="view">
+            <div id="editor"></div>
+        </div>
+        <div id="treeView" class="view" style="display: none;"></div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
