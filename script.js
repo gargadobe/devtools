@@ -21,7 +21,12 @@ function showFormat() {
     const treeView = document.getElementById('treeView');
     formatView.style.display = 'block';
     treeView.style.display = 'none';
-    editor.setValue(JSON.stringify(jsonObject, null, 2));
+    try {
+        jsonObject = JSON.parse(editor.getValue());
+        editor.setValue(JSON.stringify(jsonObject, null, 2));
+    } catch (error) {
+        alert('Invalid JSON input');
+    }
 }
 
 function showTree() {
