@@ -184,8 +184,13 @@ summary::-webkit-details-marker {
     padding-left: 20px;
 }
 
+.json-brackets + ul, .json-brackets + .json-item {
+    padding-left: 45px;
+}
+
+
 .json-object-content {
-    padding-left: 40px;
+    padding-left: 4px;
 }
 
 .json-item {

@@ -47,7 +47,7 @@ function createTree(obj, path = '') {
     let html = '<div class="json-brackets">{</div>';
     for (let key in obj) {
         if (typeof obj[key] === 'object') {
-            html += `<details open class="json-object"><summary class="json-key">${key}</summary><div class="json-brackets">{</div><ul class="json-object-content">${createTree(obj[key], path + key + '.')}</ul><div class="json-brackets">}</div></details>`;
+            html += `<details open class="json-object"><summary class="json-key">${key}</summary><div class="json-brackets"></div><ul class="json-object-content">${createTree(obj[key], path + key + '.')}</ul><div class="json-brackets"></div></details>`;
         } else {
             html += `<li class="json-item"><div class="json-key-value"><span class="json-key">${key}:</span> <span class="json-value" contenteditable="true" data-path="${path + key}">${obj[key]}</span></div></li>`;
         }
